@@ -2,7 +2,7 @@
 	// index.php
 	require_once("config.php");
 	require_once("auth.php");
-	$_connect = mysqli_connect($_SESSION["DB_SERVER"], $_SESSION["USER_NAME"], $_SESSION["USER_PSWD"]);
+	$_connect;
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,6 +24,8 @@
 					</form>
 				<?
 			} else {
+				$_connect = mysqli_connect($_SESSION["DB_SERVER"], $_SESSION["USER_NAME"], $_SESSION["USER_PSWD"]);
+				include_once("module/main/function.php");
 				include_once("ui/panel.php");
 				if (isset($_GET["view"]) == true) {
 					switch($_GET["view"]) {
@@ -37,6 +39,9 @@
 								}
 							}
 							break;
+						}
+						case "table": {
+							include_once("component/table/main.php");
 						}
 					}
 				}

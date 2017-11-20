@@ -1,0 +1,10 @@
+function get_all_dbs() {
+	$result = array();
+	$rsDB = $_connect->query("SHOW DATABASES");
+	if ($rsDB->num_rows > 0) {
+		$arDB = array();
+		while ($arItem = $rsDB->fetch_row()) {
+			$arDB[] = $arItem[0];
+		}
+	}
+}
